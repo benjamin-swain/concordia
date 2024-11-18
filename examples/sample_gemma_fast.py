@@ -3,8 +3,10 @@ from transformers import AutoTokenizer, Gemma2ForCausalLM
 from transformers.cache_utils import HybridCache
 import torch
 
+torch.set_num_threads(torch.get_num_threads())
+
 # Disable parallelism in tokenizers for single-threaded execution
-os.environ["TOKENIZERS_PARALLELISM"] = "false"
+os.environ["TOKENIZERS_PARALLELISM"] = "true"
 
 # Optimize matrix multiplication precision for faster computation
 torch.set_float32_matmul_precision("high")
