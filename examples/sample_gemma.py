@@ -10,7 +10,7 @@ def main():
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModelForCausalLM.from_pretrained(
         model_name,
-        torch_dtype=torch.float32,  # Use float32 for CPU
+        torch_dtype=torch.bfloat16,  # Use bfloat16 for faster computations
         device_map=None            # Ensure the model is not mapped to a GPU
     )
 
